@@ -1,0 +1,38 @@
+<html lang="es">
+    <head>
+        <title>Cerrar_servicio</title>
+        <link rel="stylesheet" href="css.css" type="text/css" />
+    </head>
+
+    <body>
+        <div id="center" class="centered">
+
+            <form action="/cerrar/" method="post"  enctype="multipart/form-data">
+                <fieldset >
+                    <legend align="center" >Cerrar Servicio</legend>
+                    <!--<select id="prestador" name="todo[dato]">
+
+                      {%for arre, glo in arreglo %}
+                      <option value="{{arre}}">{{glo}}</option>
+                      {%endfor%}
+
+                    </select>-->
+                    <label>Concepto Tecnico</label>
+                    <select id="" name="tecno">
+
+                        {%for tecnico in tecnico %}
+                        <option value="{{tecnico.id}}">{{tecnico.description}}</option>
+                        {%endfor%}
+
+                    </select> 
+                    <label>Trabajo Realizado</label>
+                    <textarea COLS=30 ROWS=10 NAME="todo[texto]"> </textarea>
+                    <input type="hidden" name="todo[id]" value="{{data}}"/>
+
+                    <input type="submit" value="enviar">
+                </fieldset>
+            </form>
+
+        </div>
+    </body>
+</html>

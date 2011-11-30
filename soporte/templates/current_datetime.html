@@ -1,0 +1,9 @@
+
+{% extends "base.html" %}
+{% block style %}{% include 'css.css'%}{% endblock %}
+{% block title %}La hora actual{% endblock %}
+
+{% block content %}
+<p>El momento actual es {{ fecha_actual }}.</p>
+{% endblock %}
+

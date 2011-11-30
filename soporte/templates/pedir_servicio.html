@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block style %}{% include 'css.css'%}{% endblock %}
+{% block title %}El rsultado es{% endblock %}
+{% block content %}
+
+<div id="centro"  class="centered">
+    <form action="." method="post" >
+        <fieldset>
+            <legend align="center" >Ingresar peticion</legend>
+            {{ formulario.as_p }}
+            <input type="submit" value="enviar">
+        </fieldset>
+    </form>
+</div>
+{% endblock %}

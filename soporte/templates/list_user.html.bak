@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block style %}{% include 'css.css'%}{% endblock %}
+{% block title %}La hora actual{% endblock %}
+
+{% block content %}
+
+{%for nombres, glo in us%}{{nombres.descripcion}}<br/>{%endfor%}
+ <form action="." method="post">
+ 
+
+
+   <select name="cliente" >{%for nombres in nombres%}<option>{{nombres.nombre}}</option>{%endfor%}</select></li>
+ 
+<input type="submit" value="Submit">
+</form> 
+ 
+{% endblock %}

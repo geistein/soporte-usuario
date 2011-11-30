@@ -1,0 +1,111 @@
+body {
+  background-color: #FFF;
+  font-size: 1.0em;
+  font-family: "Helvetica", sans-serif;
+  color: #564b47;
+  padding: 20px;
+  margin: 0px;
+  text-align: center;width:auto;
+}
+
+
+
+#page{
+float:left;
+width:100%;
+position:auto;
+margin:0px auto;
+ 
+ }
+
+table {
+  width: 100%;
+  border: 1px solid #DDDDB2;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+/**************************************inicio menu ****************************/
+#menu{
+    float:inherit;
+    background-color:#fff;
+    text-align: center;
+    width:100%
+}
+#menu ul, li{
+        list-style-type: none;
+        display: inline;
+ }
+
+ #menu ul {font: 100% "Helvetica, verdana";
+        margin: 0;
+        padding: 0;
+}
+
+ #menu li{
+        padding: 0px 20px;
+        text-align: center;
+
+}
+#menu a:hover {color:#564b47;}
+/******************************fin menu*********************************************/
+tr {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #CCC;
+}
+
+tr.odd {
+  background: #FFF;
+}
+
+tr.even {
+  background: #FFFFD4;
+}
+
+td {
+  margin: 0;
+  padding: 5px 5px 5px 3px;
+  vertical-align: top;
+}
+
+td.right {
+  text-align: right;
+}
+
+#centered { 	
+  text-align: left;
+  vertical-align: middle;	
+  margin: 0px auto;
+  padding: 20px;
+  width: 550px;
+  background-color: #FFF;
+  border: 1px solid #CCC;
+}
+
+#spinner {
+  display: none;
+  position: relative;
+}
+
+div.padded {
+  padding-top: 10px;
+}
+
+div.margin {
+  margin-top: 20px;
+}
+
+div.clear {
+  clear: both;
+}
+
+div.note {
+  padding: 15px;
+  background: #FFFFD4;
+  border: 1px solid #DDDDB2;
+}
+
+.hint {
+  font-size: 0.8em;
+  color: #888;
+}
+

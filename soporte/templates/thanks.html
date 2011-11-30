@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>Thanks.html</title>
+    </head>
+    <body>
+        {% extends "admin/base_site.html" %}
+        {% load i18n %}
+        {% block title %}{% trans 'Thanks' %}{% endblock %}
+        {% block content %}<h2>{% trans 'Thanks' %}</h2>
+        <p>
+            {% trans "Thanks" %}
+        </p>
+        {% endblock %}
+    </body>
+</html>

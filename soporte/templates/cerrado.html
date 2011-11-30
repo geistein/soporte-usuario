@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block style %}{% include 'css.css'%}{% endblock %}
+{% block title %}{% endblock %}
+
+{% block content %}
+<h3>Servicio cerrado satisfactoriamente</h3>
+
+Servicio pedido por: {%for nombre  in cliente%}{{nombre.name}}{%endfor%}</br>
+De la dependencia: {%for dependencia  in dependencia %}{{dependencia.name}}{%endfor%}</br>
+Argumentando : {{datos.description_failure}}</br>
+Fecha de solicitud: {{datos.application_date}}</br>
+Atendido por:{%for prestador in prestador %}{{prestador.username}}{%endfor%}</br>
+Fecha de inicio de atencion al servicio: {{datos.service_start_date}}</br>
+Fecha de finalizacion de atencion al servicio: {{datos.service_end_date}}</br>
+Por conceptos tecnicos de :{%for nombres in us%}{{nombres.description}}{%endfor%} <!--{%for nombres, glo in us%}{{nombres.descripcion}} {%endfor%}-->
+Trabajo que se le realizo: {{datos.work_made}}
+
+{% endblock %}

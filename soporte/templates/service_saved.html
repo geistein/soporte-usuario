@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block style %}{% include 'css.css'%}{% endblock %}
+{% block title %}El rsultado es{% endblock %}
+{% block content %}
+  <ul>
+	   <li><b>Cliente:</b> {{cliente}} </li>
+			<li><b>Dependencia:</b> {{dependencia}}</li>
+			<li><b>Descripcion Falla:</b> {{last_service.description_failure}}</li>
+	    <li><b>Fecha de Solicitud:</b> {{last_service.application_date}}</li>
+	     
+	</ul>		 
+	 Gracias. Servicio abierto satisfactoriamente.
+
+{% endblock %}

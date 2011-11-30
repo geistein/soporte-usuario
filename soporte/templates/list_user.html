@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}La hora actual{% endblock %}
+{% block style %}{% include 'css.css' %}{% endblock %}
+{% block extra_js %}
+
+<script type="text/javascript">
+	  $(document).ready(function() {
+            $('#green-contents').css('display', '');
+
+            var a ="{{cont}}"
+
+            $('#green').smartpaginator({ totalrecords: a, recordsperpage: 10, datacontainer: 'mt', dataelement: 'tr', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'green', onchange: function(newPage) {
+                $('#r').html('Page # ' + newPage);
+            } });
+
+
+
+
+
+        });
+	    
+            
+            
+</script>
+{% endblock %}
+
+
+
+
+{% block content %}
+ 
+<div id ="green-contents" style="display:block;">
+<table id ="mt"><tr class="titulos"><th>Tipo Servicio</th><th>Usuario</th><th>Reportes</th><th>Fecha Recibido</th><th>Fecha Atencion</th><th>T-aprox</th><th>T-espera</th><th>T-total</th></tr>
+{% for i in send %}
+<tr class = "result">
+<td>{{i.technical_concept}}</td><td>{{i.clients}}</td><td>{{i.work_made}}</td><td>{{i.application_date}}</td>
+<td>{{i.service_start_date}}</td><td>{{i.time}}</td><td>{{i.waite}}</td><td>{{i.total}}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+<!--<table > <tr border="1"><td>{{ballots}}</td><td>{{descripcion}}</td><td>{{tiempo}}</td></tr></table>-->
+<!--<table >{% for i in envia %}
+{% for e in i %}
+<tr>
+<td>
+{{e.prestador}}
+</td><td></td>
+</tr>
+{% endfor %}
+{% endfor %}</td></tr></table>-->
+
+<!--<table>
+{% for row in data %}<tr><td>{{row}} </td><td>{{row}}</td></tr>
+{% endfor %}</table>
+<form action="." method="post">
+   <select name="cliente" >{%for nombres in nombres%}<option>{{nombres.nombre}}</option>{%endfor%}</select> 
+   <input type="submit" value="Submit">
+</form> -->
+
+
+   <div id="green" style="margin: auto;">
+            </div>
+        
+ 
+ 
+{% endblock %}

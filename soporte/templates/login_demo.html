@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block style %}{% include 'css.css'%}{% endblock %}
+{% block title %}{% endblock %}
+
+{% block content %}
+   {#este form implemente login#}
+   <p>{{ error }}</p>
+   <form action="/login/" method="post">{% csrf_token %}
+        {{ form }}
+        <input type="submit" value="login">
+   </form>
+{% endblock %}

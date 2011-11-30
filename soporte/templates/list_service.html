@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% block style %}{% include 'css.css'%}{% endblock %}
+{% block title %}{% endblock %}
+
+{% block content %}
+  <!-- {%if  service.cerrado %}{{ service.closed}}
+      no hay servicios disponibles	
+	{%else%}
+	     
+			  {%for service in service%}
+           {%if not service.closed%}
+   
+               {{ service.closed}}
+               
+           {%endif%}   
+       {%endfor%}	
+	{%endif%}-->
+{{ id }}
+{% if service %}
+     <table border="1" align="center"><th colspan="5">Listado de Servicios Pendientes</th>
+               <tr><td class="titulos">Cliente</td><td class="titulos">Dependencia</td><td class="titulos">Fecha de solicitud</td><td class="titulos">Descripcion de la falla</td></tr>  	
+               {%for service in service%}
+                 <tr><td>
+                     {%for cliente in cliente %}
+                       {%if cliente.id == service.clients_id %}     
+                          {{cliente.name}}
+                       {%endif%}
+                     {%endfor%} 
+                   </td>
+                   <td>
+                    {%for dependencia in dependencia %}
+                      {%if dependencia.id == service.dependence_id%}
+                         {{dependencia.name}}
+                      {%endif%}
+                    {%endfor%}
+                   </td>
+                   <td>{{ service.application_date}}</td>
+                   <td>{{ service.description_failure}}</td>
+
+                   <td>{%if service.state == 0 %} 
+			              <a  class='service_set off'  href="/care_service/{{ service.id}}" >Atender</a>
+                          <div  class="prestador_list" style="display:none;" >
+                               
+                              <select class="list" name="tecno">
+                                     <option selected></option>
+                                   {%for prestador in prestador %}
+                                     <option value="{{prestador.id}}">{{prestador.username}}</option>
+                                   {%endfor%}
+               
+                               </select> 
+                          </div>
+                       {% else %}
+                          <a  class='service_set on' href="/care_service/{{ service.id}}"  >Atendido</a> 
+ 		               {%endif%} 
+ 	               </td>
+               </tr>
+         {%endfor%}
+{%endif%}
+</table>	
+{{ mensage}}
+
+
+
+<script>
+
+
+
+  //  function mostrar() {
+ 
+//}
+
+    $(document).ready(function(){   
+       
+        $("a.service_set ").click(function(){
+          var a = $(this);
+          if( a.hasClass("off") ){
+        
+            a.next("div.prestador_list").show();
+            a.addClass("on").removeClass("off");
+            
+            
+          }else{
+            a.next("div.prestador_list").hide();
+            a.addClass("on").removeClass("off");
+            var s = "";
+            setServices(  a, s);
+          }
+
+		return false;
+	
+        });
+
+        $("select.list").change(function(){
+            var s = $(this);
+            var a = s.parent().prev("a");
+            a.next("div.prestador_list").hide();
+            setServices(  a, s.val() );
+
+            
+        });
+   
+    
+    function setServices(p,pid){
+
+        /*
+aqui mando el request sin importar el <a> de la lista el toma la url del que diste click, pillas? si colocas en url del ajax una estatica se vuelve un mierdero xD 
+*/
+        
+		 //lo que hago aqui es guardar una instacia del elemento que dio click, para luego ser accedido desde la funcion ajax, pues si no lo hago y coloco this dentro del success no es el mismo objecto.
+                //var service_id=$("{{ service.id}}").val();
+		$.ajax({	//FUNCION AJAX JQUERY
+			type: "POST",	//TIPO DE PEDIDO AL SERVER PUEDE SER GET O POST
+			url:p.attr("href"),//Obtengo la url del <a> que le de click
+            data: {prestador_id:pid},
+			dataType: "json",//tipo de respuesta, json o si quitas esta caracteristica te responde 
+			success: function(data){
+				if(data.access){  //alert("se envio");
+
+                                  p.text("Atendido");
+                                  p.addClass("on").removeClass("off");
+                }
+
+                if(data.access){
+
+                    if(p.text()=="Atendido"){
+                    alert("esta enviando")
+                        if(confirm("¡servicio esta siendo atendido!-- ¿desea cerrarlo?")){
+				  $.colorbox({href:"/cerrar_servicios/"+data.id});
+                        }
+                    }
+
+                                
+
+
+
+                }
+            }
+		
+		});
+    }
+
+        
+    
+});
+
+</script>
+ 
+{% endblock %}

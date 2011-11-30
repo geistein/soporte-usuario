@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="es">
+    <head>
+        <link rel="stylesheet" href="/media/style.css">
+        <link rel="stylesheet" href="/media/colorbox.css" type="text/css" />
+        <link rel="stylesheet" href="/media/smartpaginator.css">
+
+        <script type="text/javascript" src="/media/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="/media/notes.js"></script>
+        <script type="text/javascript" src="/media/jquery.colorbox-min.js"></script>
+        <script type="text/javascript" src="/media/smartpaginator.js"></script>
+
+        <title>{% block title %}{% endblock %}</title>
+
+        <style >{% block style %}{% endblock %}</style>
+
+
+        {% block extra_js %}{% endblock %}
+
+
+    </head>
+
+
+    <body>
+        
+        <div id ="page">
+
+            <div id="head"></div>
+            <div id="content">
+
+
+
+                <div id="menu"> <ul>
+                        <li><a href="/service_request/">Requerir Servicio</a></li>
+                        <li><a href="/list_services/">listar servicios</a></li>
+                        <li><a href="/listar/">Servicios cerrados</a></li>
+                        <li><a href="/logout/">logout</a></li>
+                    </ul>
+                    </div>
+
+                <h1>Helpdesk Service</h1>
+                {% block content %}{% endblock %}
+
+                {% block footer %}
+                <hr>
+
+                <p>Gracias por visitar mi sitio.</p>
+                {% endblock %}
+            </div>
+        </div>
+    </body>
+</html>
+
